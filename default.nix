@@ -21,5 +21,6 @@ in
     ];
 
     shellHook = ''
+      export GOPATH="$HOME/go";
     '';
   }

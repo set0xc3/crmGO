@@ -5,10 +5,7 @@ mkdir -p .out
 build() {
     echo "Building: $1"
     case "$1" in
-        cli|client)
-            odin build "$1/main.odin" -file -out:.out/"$1.bin" && ./.out/"$1.bin"
-            ;;
-        server)
+        "$1")
             go build -buildvcs=false -o .out/"$1.bin" "$1/main.go"
             ;;
         *)
