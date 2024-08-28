@@ -25,6 +25,19 @@ run() {
     fi
 }
 
+brun() {
+    echo "brun: $1"
+    case "$1" in
+        "$1")
+            go run "$1/main.go"
+            ;;
+        *)
+            echo "	unknown build target '$1'."
+            return 1
+            ;;
+    esac
+}
+
 handle_error() {
     echo "	argument '$1' not found."
 }
@@ -42,6 +55,13 @@ elif [ "$1" = "run" ]; then
         exit 1
     fi
     run "$2"
+
+elif [ "$1" = "brun" ]; then
+    if [ -z "$2" ]; then
+        echo "	brun target not specified."
+        exit 1
+    fi
+    brun "$2"
 
 elif [ "$1" = "build:run" ]; then
     if [ -z "$2" ]; then
