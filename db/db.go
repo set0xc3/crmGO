@@ -2,7 +2,6 @@ package db
 
 import (
 	"database/sql"
-	"fmt"
 	_ "github.com/mattn/go-sqlite3"
 	"log"
 )
@@ -51,17 +50,17 @@ func DeInit() {
 	}
 }
 
-func CreateClient() (int64, error) {
+func CreateClient(client Client) (int64, error) {
 	result, err := DB.Exec(
 		`INSERT INTO clients (bookmark, tags, full_name, phone, address, email, date) 
 		VALUES(?, ?, ?, ?, ?, ?, ?);`,
-		false,
-		"None",
-		"Иван Иванов Иванович",
-		"+7 (000) 000 0000",
-		"None",
-		"none@none.com",
-		"2024/08/28",
+		client.Bookmark,
+		client.Tags,
+		client.FullName,
+		client.Phone,
+		client.Address,
+		client.Email,
+		client.Date,
 	)
 	if err != nil {
 		return 0, err
@@ -80,7 +79,7 @@ func DeleteClient(id int64) error {
 	return err
 }
 
-func ReadClientList() []Client {
+func GetClientList() []Client {
 	rows, err := DB.Query("SELECT * FROM clients")
 	if err != nil {
 		log.Fatal(err)
@@ -95,8 +94,27 @@ func ReadClientList() []Client {
 			log.Fatal(err)
 		}
 		clients = append(clients, client)
-		fmt.Println(client)
 	}
 
 	return clients
+}
+
+func GetClientById(id int64) (bool, Client) {
+	var client Client
+
+	rows, err := DB.Query("SELECT * FROM clients WHERE id = ?", id)
+	defer rows.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if rows.Next() {
+		rows.Scan(&client.Id, &client.Bookmark, &client.Tags, &client.FullName, &client.Phone, &client.Address, &client.Email, &client.Date)
+		if err != nil {
+			log.Fatal(err)
+		}
+		return true, client
+	}
+
+	return false, client
 }

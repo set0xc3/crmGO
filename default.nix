@@ -15,6 +15,7 @@ in
     LD_LIBRARY_PATH = "${pkgs.lib.makeLibraryPath libs}";
 
     buildInputs = with pkgs; [
+      jq
       go
       SDL2
       odin
