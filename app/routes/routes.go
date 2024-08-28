@@ -72,8 +72,12 @@ func HandleClients(w http.ResponseWriter, r *http.Request) {
 }
 
 func AddRoutes(mux *http.ServeMux) {
-	mux.HandleFunc("GET /clients", HandleClients)
-	mux.HandleFunc("GET /clients/{id}", HandleClients)
-	mux.HandleFunc("DELETE /clients/{id}", HandleClients)
-	mux.HandleFunc("POST /clients", HandleClients)
+	mux.HandleFunc("/static/", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "www/"+r.URL.Path[1:])
+	})
+
+	mux.HandleFunc("GET /api/v1/clients", HandleClients)
+	mux.HandleFunc("GET /api/v1/clients/{id}", HandleClients)
+	mux.HandleFunc("DELETE /api/v1/clients/{id}", HandleClients)
+	mux.HandleFunc("POST /api/v1/clients", HandleClients)
 }
