@@ -1,15 +1,16 @@
 package routes
 
 import (
-	"io"
 	"net/http"
+
+	"github.com/set0xc3/crmGO/internal/view/home"
 )
 
 func RegisterRoutes(
 	mux *http.ServeMux,
 ) {
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		io.WriteString(w, "Hello...")
+		home.Index().Render(r.Context(), w)
 	})
 }
 
