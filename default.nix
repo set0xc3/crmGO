@@ -8,6 +8,7 @@ in
     LD_LIBRARY_PATH = "${pkgs.lib.makeLibraryPath libs}";
 
     buildInputs = with pkgs; [
+      nodejs_22
       jq
       templ
       go
