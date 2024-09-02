@@ -5,13 +5,17 @@ import (
 	"log/slog"
 	"net/http"
 
-	"github.com/set0xc3/crmGO/internal/config"
-	"github.com/set0xc3/crmGO/internal/routes"
+	"github.com/set0xc3/crmGO/src/config"
+	"github.com/set0xc3/crmGO/src/db"
+	"github.com/set0xc3/crmGO/src/routes"
 )
 
 func Run(ctx context.Context) error {
 	cfg := config.NewConfig()
 	srv := routes.NewServer()
+
+	db.Init()
+	defer db.DeInit()
 
 	httpServer := &http.Server{
 		Addr:    cfg.ServerAddr,

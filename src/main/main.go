@@ -7,10 +7,13 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/set0xc3/crmGO/internal/app"
+	"github.com/set0xc3/crmGO/src/app"
 )
 
 func run(ctx context.Context, w io.Writer, args []string) error {
+	_ = w
+	_ = args
+
 	ctx, cancel := signal.NotifyContext(ctx, os.Interrupt)
 	defer cancel()
 

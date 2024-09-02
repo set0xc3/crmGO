@@ -1,11 +1,11 @@
 .PHONY: build
 build:
-	templ fmt internal/view
-	templ generate internal/view
-	go build -o ./bin/program.bin cmd/myapp/myapp.go
+	templ fmt src/view
+	templ generate src/view
+	go build -o ./bin/program.bin src/main/main.go
 
 .PHONY: run
 run:
-	templ fmt internal/view
-	templ generate internal/view
-	go run cmd/myapp/myapp.go || true
+	templ fmt src/view
+	templ generate src/view
+	go run src/main/main.go || true
