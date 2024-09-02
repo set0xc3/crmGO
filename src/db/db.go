@@ -2,8 +2,9 @@ package db
 
 import (
 	"database/sql"
-	_ "github.com/mattn/go-sqlite3"
 	"log"
+
+	_ "github.com/mattn/go-sqlite3"
 )
 
 type Client struct {
@@ -119,3 +120,22 @@ func GetClientById(id int64) (bool, Client) {
 	return false, client
 }
 
+func UpdateClientById(id int64, client Client) bool {
+	_, err := DB.Exec(
+		"UPDATE clients SET bookmark = ?, tags = ?, full_name = ?, phone = ?, address = ?, email = ?, date = ? WHERE id = ?",
+		client.Bookmark,
+		client.Tags,
+		client.FullName,
+		client.Phone,
+		client.Address,
+		client.Email,
+		client.Date,
+		id,
+	)
+	if err != nil {
+		log.Fatal(err)
+		return false
+	}
+
+	return true
+}
