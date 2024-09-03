@@ -7,11 +7,11 @@ import (
 	"strconv"
 
 	"github.com/set0xc3/crmGO/src/db"
-	"github.com/set0xc3/crmGO/src/view/home"
+	"github.com/set0xc3/crmGO/src/view"
 )
 
 func HandleIndex(w http.ResponseWriter, r *http.Request) {
-	home.Index().Render(r.Context(), w)
+	view.Index().Render(r.Context(), w)
 }
 
 func HandleClients(w http.ResponseWriter, r *http.Request) {
