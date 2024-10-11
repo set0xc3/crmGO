@@ -1,0 +1,30 @@
+body {
+	background-color: #EDEFF0;
+	margin: 0;
+	padding: 0;
+}
+
+body .wrap {
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 0;
+}
+
+header {
+	background-color: white;
+	height: 42px;
+	display: flex; /* Используем flexbox для выравнивания элементов */
+	align-items: center; /* Выравнивание по вертикали */
+	padding: 0;
+	box-sizing: border-box; /* Учитываем отступы в ширине */
+}
+
+nav {
+	display: flex; /* Используем flexbox для навигации */
+	gap: 20px; /* Промежуток между элементами навигации */
+}
+
+nav a {
+	text-decoration: none;
+	color: #293240;
+}
