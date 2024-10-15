@@ -6,58 +6,40 @@ templ Base() {
 
 <head>
 	<meta charset="utf-8" />
-	<title>Go Blueprint Hello</title>
+	<title>Hello</title>
 	<link href="assets/css/global.css" rel="stylesheet" />
 	<script src="assets/js/htmx.min.js"></script>
 </head>
 
 <body>
-	<header>
-		<div class="wrap">
-			<!-- Левая часть -->
-			<nav class="left">
-				<a href="#">Главная</a>
-				<a href="#">Каталог</a>
-				<a href="#">Контакты</a>
-				<a href="#">О нас</a>
-			</nav>
-			<!-- Правая часть -->
-			<nav class="right">
-				<button>[Store]</button>
-				<button>[Account]</button>
-			</nav>
+	<nav>
+		<!-- Левая часть -->
+		<div class="left">
+			<a href="#">Главная</a>
+			<a href="#">Каталог</a>
+			<a href="#">Контакты</a>
+			<a href="#">О нас</a>
 		</div>
-	</header>
+		<!-- Правая часть -->
+		<div class="right">
+			<button>[Store]</button>
+			<button>[Account]</button>
+		</div>
+	</nav>
+	<aside>Sidebar</aside>
 	<main>
-		<div class="layout">
-			<div class="wrap">
-				<div class="left-panel">
-					<div class="wrap"></div>
-				</div>
-				<div class="grid-items">
-					<div class="wrap">
-						<div class="div"></div>
-						<div class="div"></div>
-						<div class="div"></div>
-						<div class="div"></div>
-						<div class="div"></div>
-						<div class="div"></div>
-						<div class="div"></div>
-						<div class="div"></div>
-						<div class="div"></div>
-						<div class="div"></div>
-						<div class="div"></div>
-						<div class="div"></div>
-					</div>
-				</div>
-			</div>
+		<div class="grid-items">
+			<div class="item">1</div>
+			<div class="item">2</div>
+			<div class="item">3</div>
+			<div class="item">4</div>
+			<div class="item">5</div>
+			<div class="item">6</div>
+			<div class="item">7</div>
+			<div class="item">8</div>
 		</div>
 	</main>
-	<footer>
-		<div class="wrap">
-			FOOTER
-		</div>
-	</footer>
+	<footer>Footer</footer>
 </body>
 
 </html>

@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"github.com/a-h/templ"
+	// "github.com/aarol/reload"
 
 	"github.com/set0xc3/crmGO/cmd/web"
 )
@@ -14,12 +15,7 @@ func (s *Server) RegisterRoutes() http.Handler {
 	fileServer := http.FileServer(http.FS(web.Files))
 	mux := http.NewServeMux()
 	mux.Handle("/", templ.Handler(web.Base()))
-
-	mux.HandleFunc("/health", s.healthHandler)
-
 	mux.Handle("/assets/", fileServer)
-	mux.Handle("/web", templ.Handler(web.HelloForm()))
-	mux.HandleFunc("/hello", web.HelloWebHandler)
 
 	return mux
 }
